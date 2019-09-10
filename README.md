@@ -15,6 +15,6 @@ Bu çalışmanın yürütülmesini, 118Y282 numaralı proje ile destekleyen TÜB
 * İ. Buğra Coşkun
 * Sibel Sertok
 
-## Kütüphanenin geliştirilmesine katkı sağlayanlar:
+## Kütüphanenin geliştirilmesine katkı sağlayanlar
 * Çağlayan Aşkın
 * A. Serdar Darendelioğlu
