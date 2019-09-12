@@ -109,6 +109,54 @@ class mongoDB():
 
         del cursor
         return timediff, result
+		
+# Kac yolculugun başlangıç ve bitiş konumları aynı? 
+    def sameStartEndLocation(self):
+        pipeline = [
+            {
+                u"$match": {
+                    u"geometry_pk": {
+                        u"$exists": True
+                    },
+                    u"geometry_do": {
+                        u"$exists": True
+                    },
+                    u"properties.ID_Postgres": {
+                        u"$exists": True
+                    }
+                }
+            },
+            {
+                u"$project": {
+                    u"geometry_pk": 1.0,
+                    u"geometry_do": 1.0,
+                    u"properties.ID_Postgres": 1.0,
+                    u"AyniMi?": {
+                        u"$eq": [
+                            u"$geometry_pk.coordinates",
+                            u"$geometry_do.coordinates"
+                        ]
+                    }
+                }
+            },
+                   {
+                       u"$match": {
+                           u"AyniMi?": True
+                       }
+                   }
+        ]
+
+        start_time = datetime.datetime.now()
+        cursor = self.collection.aggregate(pipeline, allowDiskUse=True)
+        result = 0
+        for doc in cursor:
+            result = result + 1
+        finish_time = datetime.datetime.now()
+        
+        timediff = (finish_time - start_time).total_seconds()
+
+        del cursor
+        return timediff, result
 
 # -----------------------------------------------------------------------
 #   -------------   Postgres
