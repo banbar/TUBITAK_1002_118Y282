@@ -154,7 +154,7 @@ numRecords = cur.fetchone()
 # Determine the number of GeoJSON files to be generated based on
 # i) the number of records and ii) chunk size
 chunkSize = 2000000 #each GeoJSON file would contain this number of records
-numChunks = results[0]//chunkSize + 1
+numChunks = numRecords[0]//chunkSize + 1
 #numChunks = 5 #testing the script
 
 for i in range(numChunks):
