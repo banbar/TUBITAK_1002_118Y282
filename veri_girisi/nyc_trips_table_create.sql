@@ -24,6 +24,7 @@ CREATE TABLE trips_text(
                 total text,
                 constraint "PK_text" PRIMARY KEY (id))
 
+create extension postgis
 
 
 -- Optimal trip table design
